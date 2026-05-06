@@ -10,7 +10,8 @@ This tool is an effecient yet concise downloader for Steam depots. It connects t
 
 ## Building
 
-> [!TIP] Ensure you have the proper dependencies installed!
+> [!TIP] 
+> Ensure you have the proper dependencies installed!
 
 ### 1. Clone the repository
 ```bash
@@ -26,7 +27,8 @@ cd depot-downloader-cpp
 ```bash
 cmake -B build
 ```
-> [!IMPORTANT] You MUST attach `-DBUILD_BINARY=ON` in this command to build the CLI tool! 
+> [!IMPORTANT] 
+> You MUST attach `-DBUILD_BINARY=ON` in this command to build the CLI tool! 
 
 ### 4. Build the project
 ```bash
