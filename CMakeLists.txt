@@ -32,8 +32,8 @@ target_include_directories(DepotDL
 target_link_libraries(DepotDL
     PUBLIC
         Boost::system
-    PRIVATE
         CURL::libcurl
+    PRIVATE
         ${CRYPTOPP_LIB}
         ZLIB::ZLIB
 )
