@@ -73,7 +73,8 @@ void Downloader::preallocate_files(const DepotManifest& manifest) {
         auto full_path = fs::path(config_.output_dir) / path;
         fs::create_directories(full_path.parent_path());
 
-        int fd = open(full_path.c_str(), O_WRONLY | O_CREAT, 0644);
+        std::string path_str = full_path.string();
+        int fd = open(path_str.c_str(), O_WRONLY | O_CREAT, 0644);
         if (fd < 0) throw std::runtime_error("Failed to open file: " + full_path.string());
 
 #ifdef __linux__
