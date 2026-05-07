@@ -5,10 +5,10 @@
 #include <zlib.h>
 #include <lzma.h>
 #include <fcntl.h>
-#include <unistd.h>
 
 #include <stdexcept>
 #include <filesystem>
+#include "macros.hpp"
 
 using namespace DepotDL;
 
