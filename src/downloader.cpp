@@ -78,9 +78,9 @@ void Downloader::preallocate_files(const DepotManifest& manifest) {
         if (fd < 0) throw std::runtime_error("Failed to open file: " + full_path.string());
 
 #ifdef __linux__
-        fallocate(fd, 0, 0, static_cast<off_t>(size));
+        fallocate(fd, 0, 0, static_cast<int64_t>(size));
 #else
-        ftruncate(fd, static_cast<off_t>(size));
+        ftruncate(fd, static_cast<int64_t>(size));
 #endif
         file_descriptors_[path] = fd;
     }
@@ -194,7 +194,7 @@ void Downloader::write_chunk(const ChunkDescriptor& chunk, const std::vector<uin
         throw std::runtime_error("No file descriptor for: " + chunk.file_path);
     }
 
-    int written = pwrite(it->second, data.data(), data.size(), static_cast<off_t>(chunk.offset));
+    int written = pwrite(it->second, data.data(), data.size(), static_cast<int64_t>(chunk.offset));
     if (written < 0 || static_cast<size_t>(written) != data.size()) {
         throw std::runtime_error("pwrite failed for chunk: " + chunk.chunk_id);
     }
