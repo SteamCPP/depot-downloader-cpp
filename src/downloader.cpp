@@ -194,7 +194,7 @@ void Downloader::write_chunk(const ChunkDescriptor& chunk, const std::vector<uin
         throw std::runtime_error("No file descriptor for: " + chunk.file_path);
     }
 
-    ssize_t written = pwrite(it->second, data.data(), data.size(), static_cast<off_t>(chunk.offset));
+    int written = pwrite(it->second, data.data(), data.size(), static_cast<off_t>(chunk.offset));
     if (written < 0 || static_cast<size_t>(written) != data.size()) {
         throw std::runtime_error("pwrite failed for chunk: " + chunk.chunk_id);
     }
